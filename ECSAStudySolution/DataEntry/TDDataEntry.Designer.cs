@@ -63,6 +63,7 @@
             this.btnTDEntry.TabIndex = 2;
             this.btnTDEntry.Text = "Enter Training Data";
             this.btnTDEntry.UseVisualStyleBackColor = true;
+            this.btnTDEntry.Click += new System.EventHandler(this.btnTDEntry_Click);
             // 
             // btnExit
             // 
@@ -76,7 +77,7 @@
             // 
             // btnDeleteDAta
             // 
-            this.btnDeleteDAta.Location = new System.Drawing.Point(229, 12);
+            this.btnDeleteDAta.Location = new System.Drawing.Point(126, 12);
             this.btnDeleteDAta.Name = "btnDeleteDAta";
             this.btnDeleteDAta.Size = new System.Drawing.Size(108, 30);
             this.btnDeleteDAta.TabIndex = 4;
@@ -89,6 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.btnDeleteDAta);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnTDEntry);

@@ -37,12 +37,21 @@ namespace UoB.TD
 
         private void btnDeleteDAta_Click(object sender, EventArgs e)
         {
+            DialogResult dResult =  MessageBox.Show("Are you sure to delete master data and tables", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dResult.ToString().Equals("No"))
+                return;
             string errorDetails = string.Empty;
             if (TrDBTableCreate.DropAllTables(conn,ref errorDetails))
                 MessageBox.Show("All Master tables are deleted from trdatav1 database");
             else
                 MessageBox.Show(errorDetails);
             
+        }
+
+        private void btnTDEntry_Click(object sender, EventArgs e)
+        {
+            TrainingData trData = new TrainingData(conn);
+            trData.ShowDialog();
         }
     }
 }

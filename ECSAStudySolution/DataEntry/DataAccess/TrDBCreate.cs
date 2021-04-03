@@ -26,7 +26,6 @@ namespace UoB.TD.DataAccess
                                                     drop table CommonParameters;
                                                     drop table applicationarea;           
                                                     drop table architecturestyle;          
-                                                    drop table architecturestylefeatures;  
                                                     drop table bcconsensus;                
                                                     drop table bcdataaccess;               
                                                     drop table bcdataaccesspolicy;         
@@ -38,7 +37,8 @@ namespace UoB.TD.DataAccess
                                                     drop table bcscalability;              
                                                     drop table blockchainplatforms;        
                                                     drop table datastoragesystems;         
-                                                    drop table nfrsinarchitecture;");
+                                                    drop table nfrsinarchitecture;
+                                                    drop table ResultsObtained");
                 MySqlCommand cmd = new MySqlCommand(dropTables.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -71,19 +71,19 @@ namespace UoB.TD.DataAccess
             try
             {
                 //1. Creating ApplicationArea Table and inserting rows
-                string aArea = string.Format(@"CREATE TABLE `trdatav1`.`ApplicationArea` (`aaID` INT NOT NULL, `aaName` VARCHAR(150) NOT NULL, `aaNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`aaID`));");
+                string aArea = string.Format(@"CREATE TABLE `trdatav1`.`ApplicationArea` (`aaID` VARCHAR(3) NOT NULL, `aaName` VARCHAR(150) NOT NULL, `aaNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`aaID`));");
                 MySqlCommand cmd = new MySqlCommand(aArea.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string aAreaData = string.Format(@"INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (1,'Healthcare','Health care systems');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (2,'CPS','Cyber Physical Systems');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (3,'VM','Intellgient Transportation');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (4,'SC','Supply Chain Systems');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (5,'DS','Document Stores');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES (6,'LM','Log Management');");
+                string aAreaData = string.Format(@"INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('HC','Healthcare','Health care systems');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('CPS','CPS','Cyber Physical Systems');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('VM','Vehicle Monitoring','Intellgient Transportation');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('SC','Supply Chain','Supply Chain Systems');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('DS','Document Store','Document Stores');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('LM','Log Management','Log Management');");
                 cmd = new MySqlCommand(aAreaData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -91,22 +91,22 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //2. Creating Blockchain Network Table and inserting rows
-                string bcNetwork = string.Format(@"CREATE TABLE `trdatav1`.`BCNetworks` (`bcnID` INT NOT NULL, `bcnName` VARCHAR(150) NOT NULL, `bcnNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcnID`));");
+                string bcNetwork = string.Format(@"CREATE TABLE `trdatav1`.`BCNetworks` (`bcnID`  VARCHAR(3) NOT NULL, `bcnName` VARCHAR(150) NOT NULL, `bcnNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcnID`));");
                 cmd = new MySqlCommand(bcNetwork.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcnData = string.Format(@"INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (1,'Pri','Private Blockchains');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (2,'C-Pri','Customizations done to Private Blockchains solutions like modfying consensus or participation');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (3,'Pro','Protected Blockchains');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (4,'C-Pr0','Customizations done to Protected Blockchain solutions like modfying consensus or participation');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (5,'Con','Consortium Blockchains');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (6,'C-Con','Customizations done to Consortium Blockchains solutions like modfying consensus or participation');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (7,'Pub','Public Blockchains');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (8,'New','Newly Implemented Blockchains from ground up');
-                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES (9,'Oth','Other networks like Gunicorn that are considered as Blockchains');");
+                string bcnData = string.Format(@"INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('PRI','Private','Private Blockchains');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('CPI','Customized-Private','Customizations done to Private Blockchains solutions like modfying consensus or participation');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('PRO','Protected','Protected Blockchains');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('CPO','Customized-Protected','Customizations done to Protected Blockchain solutions like modfying consensus or participation');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('CON','Consortium','Consortium Blockchains');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('CCN','Customized-Consortium','Customizations done to Consortium Blockchains solutions like modfying consensus or participation');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('PUB','Public','Public Blockchains');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('NEW','New Implementation','Newly Implemented Blockchains from ground up');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('OTH','Others','Other networks like Gunicorn that are considered as Blockchains');");
                 cmd = new MySqlCommand(bcnData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -114,17 +114,17 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //3. Creating Blockchain Network Participation table and rows.
-                string bcNPart = string.Format(@"CREATE TABLE `trdatav1`.`BCNWParticipation` (`bcnpID` INT NOT NULL, `bcnpName` VARCHAR(150) NOT NULL, `bcnpNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcnpID`));");
+                string bcNPart = string.Format(@"CREATE TABLE `trdatav1`.`BCNWParticipation` (`bcnpID`  VARCHAR(3) NOT NULL, `bcnpName` VARCHAR(150) NOT NULL, `bcnpNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcnpID`));");
                 cmd = new MySqlCommand(bcNPart.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcNPartData = string.Format(@"INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES (1,'Open','Open PArticipation as in Public Blockchains');
-                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES (2,'Perm','Permission required for participating in Blockchain network');
-                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES (3,'Cri','Participating in Blockchain network is dependent on certain criteria like being a member of socitey');
-                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES (4,'Oth', 'Other ways of Participating in Blockchain network ');");
+                string bcNPartData = string.Format(@"INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES ('OPN','Open','Open PArticipation as in Public Blockchains');
+                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES ('PRM','Permmission Required','Permission required for participating in Blockchain network');
+                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES ('CRI','Criteria Dependent','Participating in Blockchain network is dependent on certain criteria like being a member of socitey');
+                                                     INSERT INTO BCNWParticipation(bcnpID,bcnpName,bcnpNotes) VALUES ('OTH','Others', 'Other ways of Participating in Blockchain network ');");
                 cmd = new MySqlCommand(bcNPartData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -132,16 +132,16 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //4. Creating Blockchain Consensus table and rows.
-                string bcConsensus = string.Format(@"CREATE TABLE `trdatav1`.`BCConsensus` (`bccID` INT NOT NULL, `bccName` VARCHAR(150) NOT NULL, `bccNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bccID`));");
+                string bcConsensus = string.Format(@"CREATE TABLE `trdatav1`.`BCConsensus` (`bccID` VARCHAR(3) NOT NULL, `bccName` VARCHAR(150) NOT NULL, `bccNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bccID`));");
                 cmd = new MySqlCommand(bcConsensus.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bccData = string.Format(@"INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES (1,'Std','Standard Consensus algorithms that comes with Blockchain solutions');
-                                                 INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES (2,'Cust','Consensus algorithms  provided with Blockchain solutions are customized by changing code base');
-                                                 INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES (3,'New','New Consensus algorithms');");
+                string bccData = string.Format(@"INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES ('STD','Standard','Standard Consensus algorithms that comes with Blockchain solutions');
+                                                 INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES ('CST','Customized Algorithms','Consensus algorithms  provided with Blockchain solutions are customized by changing code base');
+                                                 INSERT INTO BCConsensus(bccID,bccName,bccNotes) VALUES ('NEW','New Implementations','New Consensus algorithms');");
                 cmd = new MySqlCommand(bccData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -149,18 +149,18 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //5. Creating Blockchain Scalability table and rows.
-                string bcScalability = string.Format(@"CREATE TABLE `trdatav1`.`BCScalability` (`bcsID` INT NOT NULL, `bcsName` VARCHAR(150) NOT NULL, `bcsNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcsID`));");
+                string bcScalability = string.Format(@"CREATE TABLE `trdatav1`.`BCScalability` (`bcsID` VARCHAR(3) NOT NULL, `bcsName` VARCHAR(150) NOT NULL, `bcsNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcsID`));");
                 cmd = new MySqlCommand(bcScalability.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcsData = string.Format(@"INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES (1,'AC','Scalability is achieved using Consensus mechanisms');
-                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES (2,'AD','Scalability is achieved through the means of underlying Database');
-                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES (3,'AP','Scalability is achieved using underlying Physical storage');
-                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES (4,'AO','Scalability is achieved using other means');
-                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES (5,'NC','Scalability is Not considered at all'); ");
+                string bcsData = string.Format(@"INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES ('AC','Achieved via Consensus','Scalability is achieved using Consensus mechanisms');
+                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES ('AD','Achieved via Database','Scalability is achieved through the means of underlying Database');
+                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES ('PS','Achieved via  Physical','Scalability is achieved using underlying Physical storage');
+                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES ('AO','Achieved via Other','Scalability is achieved using other means');
+                                                 INSERT INTO BCScalability(bcsID,bcsName,bcsNotes) VALUES ('NC','Not Considered','Scalability is Not considered at all'); ");
                 cmd = new MySqlCommand(bcsData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -168,17 +168,17 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //6. Creating Blockchain Latency table and rows.
-                string bcLatency = string.Format(@"CREATE TABLE `trdatav1`.`BCLatency` (`bclID` INT NOT NULL, `bclName` VARCHAR(150) NOT NULL, `bclNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bclID`));");
+                string bcLatency = string.Format(@"CREATE TABLE `trdatav1`.`BCLatency` (`bclID` VARCHAR(3) NOT NULL, `bclName` VARCHAR(150) NOT NULL, `bclNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bclID`));");
                 cmd = new MySqlCommand(bcLatency.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bclData = string.Format(@"INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES (1,'RL','Read Latency time is the time taken to receive reply from blokchain after read submit');
-                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES (2,'TL','Transaction Latency is amount of time taken for transaction is usable across blockchain network');
-                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES (3,'NL','Network Latency is amount of latency for data to travel across the network, firewalls from one communication endpoint to another.');
-                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES (4,'OT','Other uncategorized latencies tha cause delay');");
+                string bclData = string.Format(@"INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES ('RL','Read Latency','Read Latency time is the time taken to receive reply from blokchain after read submit');
+                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES ('TL','Transaction Latency','Transaction Latency is amount of time taken for transaction is usable across blockchain network');
+                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES ('NL','Network Latency','Network Latency is amount of latency for data to travel across the network, firewalls from one communication endpoint to another.');
+                                                 INSERT INTO BCLatency(bclID,bclName,bclNotes) VALUES ('OT','Other','Other uncategorized latencies tha cause delay');");
                 cmd = new MySqlCommand(bclData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -186,19 +186,19 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //7. Creating Blockchain Performance table and rows.
-                string bcPerformance = string.Format(@"CREATE TABLE `trdatav1`.`BCPerformance` (`bcprID` INT NOT NULL, `bcprName` VARCHAR(150) NOT NULL, `bcprNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcprID`));");
+                string bcPerformance = string.Format(@"CREATE TABLE `trdatav1`.`BCPerformance` (`bcprID` VARCHAR(3) NOT NULL, `bcprName` VARCHAR(150) NOT NULL, `bcprNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcprID`));");
                 cmd = new MySqlCommand(bcPerformance.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcprData = string.Format(@"INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (1,'TP','Transaction Throughput is rate at which valid transactions are committed by blockchain in a time period');
-                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (2,'CL-GD','Geographic distribution of co-locating nodes');
-                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (3,'DP-GD','Geographic distribution of dispersed nodes');
-                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (4,'HE-HW','High end hardware high processor speed with number of cores and memory');
-                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (5,'LW-HW','Low end hardware nomial processor speed with no cores and less memory'); 
-                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES (6,'Other','Other performance indicators for blockchain');");
+                string bcprData = string.Format(@"INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('TTP','Transaction Throughput ','Transaction Throughput is rate at which valid transactions are committed by blockchain in a time period');
+                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('CGD','Colocted Geographic distribution ','Geographic distribution of co-locating nodes');
+                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('DGD','Dispersed Geographic distribution ','Geographic distribution of dispersed nodes');
+                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('HHW','High End Hardware','High end hardware high processor speed with number of cores and memory');
+                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('LHW','Low End Hardware','Low end hardware nomial processor speed with no cores and less memory'); 
+                                                  INSERT INTO BCPerformance(bcprID,bcprName,bcprNotes) VALUES ('OTH','Other Factors','Other performance indicators for blockchain');");
                 cmd = new MySqlCommand(bcprData.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -206,17 +206,17 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //8. Creating Data Access from Blockchain.
-                string bcDAccess = string.Format(@"CREATE TABLE `trdatav1`.`BCDataAccess` (`bcdaID` INT NOT NULL, `bcdaName` VARCHAR(150) NOT NULL, `bcdaNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdaID`));");
+                string bcDAccess = string.Format(@"CREATE TABLE `trdatav1`.`BCDataAccess` (`bcdaID` VARCHAR(3) NOT NULL, `bcdaName` VARCHAR(150) NOT NULL, `bcdaNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdaID`));");
                 cmd = new MySqlCommand(bcDAccess.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcDataAccess = string.Format(@"INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES (1,'BD','Blockchain default APIS to access data from blockchain');
-                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES (2,'BC','Blockchain default APIS  are customized for accessing data from blockchain');
-                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES (3,'BA','Blockchain default APIS  are combined with other DB access engines for accessing data from blockchain');
-                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES (4,'NW','New APIS or Engines for accessing data from blockchain');");
+                string bcDataAccess = string.Format(@"INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES ('BD','Blockchain Default','Blockchain default APIS to access data from blockchain');
+                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES ('BC','Blockchain + Customized','Blockchain default APIS  are customized for accessing data from blockchain');
+                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES ('BA','Blockchain + DB','Blockchain default APIS  are combined with other DB access engines for accessing data from blockchain');
+                                                      INSERT INTO BCDataAccess(bcdaID,bcdaName,bcdaNotes) VALUES ('NW','New APIS','New APIS or Engines for accessing data from blockchain');");
                 cmd = new MySqlCommand(bcDataAccess.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -225,17 +225,17 @@ namespace UoB.TD.DataAccess
 
 
                 //9. Creating Data Access from Blockchain.
-                string bcDAPolicy = string.Format(@"CREATE TABLE `trdatav1`.`BCDataAccessPolicy` (`bcdapID` INT NOT NULL, `bcdapName` VARCHAR(150) NOT NULL, `bcdapNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdapID`));");
+                string bcDAPolicy = string.Format(@"CREATE TABLE `trdatav1`.`BCDataAccessPolicy` (`bcdapID` VARCHAR(3) NOT NULL, `bcdapName` VARCHAR(150) NOT NULL, `bcdapNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdapID`));");
                 cmd = new MySqlCommand(bcDAPolicy.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcDataAccessPolicy = string.Format(@"INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES (1,'SC','User defined data access policies in Smart Contract');
-                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES (2,'KY','User defined data access policies using public Key infrastructure and store the key info in blockchain');
-                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES (3,'PB','Data Stored is for public');
-                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES (4,'OT','Data access policy is defined in other ways');");
+                string bcDataAccessPolicy = string.Format(@"INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES ('SC','Smart Contract','User defined data access policies in Smart Contract');
+                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES ('KY','Key Infrastructure','User defined data access policies using public Key infrastructure and store the key info in blockchain');
+                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES ('PB','Public','Data Stored is for public');
+                                                            INSERT INTO BCDataAccessPolicy(bcdapID,bcdapName,bcdapNotes) VALUES ('OT','Other','Data access policy is defined in other ways');");
                 cmd = new MySqlCommand(bcDataAccessPolicy.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -243,19 +243,19 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //10. Blockchain Transaction data formats .
-                string bcDAFormat = string.Format(@"CREATE TABLE `trdatav1`.`BCDataFormat` (`bcdfID` INT NOT NULL, `bcdfName` VARCHAR(150) NOT NULL, `bcdfNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdfID`));");
+                string bcDAFormat = string.Format(@"CREATE TABLE `trdatav1`.`BCDataFormat` (`bcdfID` VARCHAR(3) NOT NULL, `bcdfName` VARCHAR(150) NOT NULL, `bcdfNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bcdfID`));");
                 cmd = new MySqlCommand(bcDAFormat.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcDataFormat = string.Format(@"INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (1,'SM','Data is formatted using standard data models like Relational, Key-Value etc.');
-                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (2, 'JSON', 'Data is formatted using Java Script Object Notation');
-                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (3, 'XML', 'Data is formatted using XML');
-                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (4, 'Tuple', 'Data is formatted using Tuple structure like triple, quadruple, pentuple etc..');
-                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (5, 'Other', 'Data is formatted using other formats');
-                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES (6, 'NF', 'No Format Data is not formatted or not mentioned');");
+                string bcDataFormat = string.Format(@"INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('SM','Standard Model','Data is formatted using standard data models like Relational, Key-Value etc.');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('JSN', 'JSON', 'Data is formatted using Java Script Object Notation');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('XML', 'XML', 'Data is formatted using XML');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('TPL', 'Tuple', 'Data is formatted using Tuple structure like triple, quadruple, pentuple etc..');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('OTH', 'Other', 'Data is formatted using other formats');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('NF', 'No Format', 'No Format Data is not formatted or not mentioned');");
                 cmd = new MySqlCommand(bcDataFormat.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
@@ -263,88 +263,39 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 //11. Architecture Styles.
-                string bcAStyle = string.Format(@"CREATE TABLE `trdatav1`.`ArchitectureStyle` (`asID` INT NOT NULL, `asName` VARCHAR(150) NOT NULL, `asNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`asID`));");
+                string bcAStyle = string.Format(@"CREATE TABLE `trdatav1`.`ArchitectureStyle` (`asID` VARCHAR(3) NOT NULL, `asName` VARCHAR(150) NOT NULL, `asNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`asID`));");
                 cmd = new MySqlCommand(bcAStyle.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcArchStyle = string.Format(@"INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES (1,'SOA','Service Oriented Architecture');
-                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES (2,'MS','Micro Services based Architecture');
-                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES (3,'OF','OpenFog Architecture for IoT');
-                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES (4,'CS','Cloud Oriented Architecture');
-                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES (5,'OS','Other Styles like Object Oriented, Component Oriented, Layered architectures.');");
+                string bcArchStyle = string.Format(@"INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('SOA','SOA','Service Oriented Architecture');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('MS','Micro Services','Micro Services based Architecture');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OF','Open Fog','OpenFog Architecture for IoT');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('CO','Cloud Oriented','Cloud Oriented Architecture');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OS','Others ','Other Styles like Object Oriented, Component Oriented,Edge, Layered architectures.');");
                 cmd = new MySqlCommand(bcArchStyle.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                //12. Features for each Architecture Style.
-                string bcASFeature = string.Format(@"CREATE TABLE `trdatav1`.`ArchitectureStyleFeatures` (`asfID` INT NOT NULL, `asfName` VARCHAR(150) NOT NULL, `asfNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`asfID`));");
-                cmd = new MySqlCommand(bcASFeature.ToString(), conn);
-                cmd.Transaction = myTrans;
-                cmd.ExecuteNonQuery();
-                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
-                cmd = null;
-
-                string bcAStFeature = string.Format(@"INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (1,'SOA-Service Descriptions','Service Descriptions for services');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (2,'SOA-Service Contract','Service Contract abstractly describes functionality of service');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (3,'SOA-Service Policy','Service Policy');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (4,'SOA-Service Discovery','Service Discovery enables discovering service'); 
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (5,'SOA-Service Bus','Service Bus is the wrapping service with communication protocols'); 
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (6,'SOA-Service Composition','Services using other services');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (7,'SOA-Service Asynchronous','Asyn Services');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (8,'SOA-Service Orchestration','arranging services');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (9,'SOA-Service Virtualization','Crucual for Scaling');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (10,'SOA-Service Quality','Quality of Service'); 
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (11,'SOA-Interoperability','Inter operability'); 
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (12,'SOA-Location Transparency','Service can be hosted any location');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (13,'MS-Module Boundaries',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (14,'MS-Deployment',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (15,'MS-Technology Diversity',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (16,'MS-Consistency',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (17,'MS-Complexity',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (18,'MS-Diversity',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (19,'OF-Open',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (20,'OF-Autonomy',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (21,'OF-Reliability',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (22,'OF-Serviceability',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (23,'OF-Agility',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (24,'OF-Hierarchy',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (25,'OF-Programmability',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (26,'OF-N-Tier Fog Deployment',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (27,'CS-Data Management',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (28,'CS-Messaging',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (29,'CS-Management',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (30,'CS-Monitoring',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (31,'CS-Resiliency',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (32,'CS-Security',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (33,'OT-Object Oriented',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (34,'OT-Component Oriented',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (35,'OT-ClientServer',' ');
-                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (36,'Other',' ');");
-                cmd = new MySqlCommand(bcAStFeature.ToString(), conn);
-                cmd.Transaction = myTrans;
-                cmd.ExecuteNonQuery();
-                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
-                cmd = null;
-
-                //13. NFRS in Architecture Styles.
-                string bcASNfrs = string.Format(@"CREATE TABLE `trdatav1`.`NFRsInArchitecture` (`nfrasID` INT NOT NULL, `nfrasName` VARCHAR(150) NOT NULL, `nfrasNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`nfrasID`));");
+                
+                //12. NFRS in Architecture Styles.
+                string bcASNfrs = string.Format(@"CREATE TABLE `trdatav1`.`NFRsInArchitecture` (`nfrasID` VARCHAR(3) NOT NULL, `nfrasName` VARCHAR(150) NOT NULL, `nfrasNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`nfrasID`));");
                 cmd = new MySqlCommand(bcASNfrs.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcNFRArchStyle = string.Format(@"INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (1,'Scalability','Scalability of data access logic');
-                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (2,'Performace','Performace of system');
-                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (3,'Availability','Availability of services or functionality');
-                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (4,'Security','Security');
-                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (5,'Configurability','Configuration of services');
-                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES (6,'Resource utilization','usage of resources');
+                string bcNFRArchStyle = string.Format(@"INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('SCL','Scalability','Scalability of data access logic');
+                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('PRF','Performace','Performace of system');
+                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('AVI','Availability','Availability of services or functionality');
+                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('SEC','Security','Security');
+                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('CNG','Configurability','Configuration of services');
+                                                        INSERT INTO NFRsInArchitecture(nfrasID,nfrasName,nfrasNotes) VALUES ('RES','Resource utilization','usage of resources');
                                                      ");
                 cmd = new MySqlCommand(bcNFRArchStyle.ToString(), conn);
                 cmd.Transaction = myTrans;
@@ -352,66 +303,87 @@ namespace UoB.TD.DataAccess
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                //14. NFRS in Architecture Styles.
-                string bcDtStor = string.Format(@"CREATE TABLE `trdatav1`.`DataStorageSystems` (`dsID` INT NOT NULL, `dsName` VARCHAR(150) NOT NULL, `dsNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`dsID`));");
+                //13. NFRS in Architecture Styles.
+                string bcDtStor = string.Format(@"CREATE TABLE `trdatav1`.`DataStorageSystems` (`dsID` VARCHAR(3) NOT NULL, `dsName` VARCHAR(150) NOT NULL, `dsNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`dsID`));");
                 cmd = new MySqlCommand(bcDtStor.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcDStoSystems = string.Format(@"INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES (1,'BD','Blockchain Puls other databases');
-                                                       INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES (2,'BS','Blockchain Puls other storage sysems like File or content storage systems');
-                                                       INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES (3,'BC','Blockchain is used to store data');");
+                string bcDStoSystems = string.Format(@"INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES ('BD','Blockchain+DB','Blockchain Puls other databases');
+                                                       INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES ('BS','Blockchain + Storage','Blockchain Puls other storage sysems like File or content storage systems');
+                                                       INSERT INTO DataStorageSystems(dsID,dsName,dsNotes) VALUES ('BC','Blockchain','Blockchain is used to store data');");
                 cmd = new MySqlCommand(bcDStoSystems.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                //15. NFRS in Architecture Styles.
-                string bcBcs = string.Format(@"CREATE TABLE `trdatav1`.`BlockchainPlatforms` (`bpID` INT NOT NULL, `bpName` VARCHAR(150) NOT NULL, `bpNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bpID`));");
+              
+                //14.Blockchains.
+                string bcBcs = string.Format(@"CREATE TABLE `trdatav1`.`BlockchainPlatforms` (`bpID` VARCHAR(3) NOT NULL, `bpName` VARCHAR(150) NOT NULL, `bpNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`bpID`));");
                 cmd = new MySqlCommand(bcBcs.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bchains = string.Format(@"INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (1,'Bitcoin','https://bitcoin.org/en/how-it-works');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (2,'Chainlink','https://chain.link/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (3,'Concord','http://projectconcord.io/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (4,'Corda / R3','https://www.r3.com/corda-platform/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (5,'Emercoin','https://emercoin.com/en');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (6,'Energy Web Foundation EWF','https://www.energyweb.org/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (7,'Ethereum','https://ethereum.org/en/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (8,'Filecoin','https://filecoin.io/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (9,'Grd','https://www.grd.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (10,'HashGraph','https://hedera.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (11,'IBM - Hyperledger (Fabric)','https://www.hyperledger.org/use/fabric');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (12,'IoTeX','https://iotex.io/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (13,'Lo3','https://lo3energy.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (14,'Microsoft','https://azure.microsoft.com/en-gb/services/blockchain-service/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (15,'MultiChain','https://www.multichain.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (16,'Powerledger','https://www.powerledger.io/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (17,'Qtum','https://qtum.org/en');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (18,'Quorum','https://consensys.net/quorum/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (19,'Sia','https://sia.tech/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (20,'Storj','https://www.storj.io/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (21,'Tor','https://en.bitcoin.it/wiki/Tor');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (22,'WaltonChain','http://www.waltonchain.org/en/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (23,'IOTA','https://www.iota.org/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (24,'BigChainDB','https://www.bigchaindb.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (25,'Tendermint','https://tendermint.com/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (26,'GRIDNET','https://gridnet.org/');
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (27,'Custom',' ');	
-                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES (28,'Others',' ');");
+                string bchains = string.Format(@"INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('BTC','Bitcoin','https://bitcoin.org/en/how-it-works');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('CHL','Chainlink','https://chain.link/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('CCD','Concord','http://projectconcord.io/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('CRD','Corda / R3','https://www.r3.com/corda-platform/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('ECN','Emercoin','https://emercoin.com/en');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('EWF','Energy Web Foundation EWF','https://www.energyweb.org/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('ETH','Ethereum','https://ethereum.org/en/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('FCN','Filecoin','https://filecoin.io/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('GRD','Grd','https://www.grd.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('HGH','HashGraph','https://hedera.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('IBM','IBM - Hyperledger (Fabric)','https://www.hyperledger.org/use/fabric');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('IOT','IoTeX','https://iotex.io/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('LO3','Lo3','https://lo3energy.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('MS','Microsoft','https://azure.microsoft.com/en-gb/services/blockchain-service/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('MC','MultiChain','https://www.multichain.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('PL','Powerledger','https://www.powerledger.io/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('QTM','Qtum','https://qtum.org/en');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('QRM','Quorum','https://consensys.net/quorum/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('SIA','Sia','https://sia.tech/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('STJ','Storj','https://www.storj.io/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('TOR','Tor','https://en.bitcoin.it/wiki/Tor');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('WCN','WaltonChain','http://www.waltonchain.org/en/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('IOA','IOTA','https://www.iota.org/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('BDB','BigChainDB','https://www.bigchaindb.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('TMT','Tendermint','https://tendermint.com/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('GNT','GRIDNET','https://gridnet.org/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('CUS','Custom',' ');	
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('OTH','Others',' ');");
                 cmd = new MySqlCommand(bchains.ToString(), conn);
                 cmd.Transaction = myTrans;
                 cmd.ExecuteNonQuery();
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                //14. Common Parameters.
+                //15. Possible Results.
+                string bcPRes = string.Format(@"CREATE TABLE `trdatav1`.`ResultsObtained` (`rsID` VARCHAR(3) NOT NULL, `rsName` VARCHAR(150) NOT NULL, `rsNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`rsID`));");
+                cmd = new MySqlCommand(bcPRes.ToString(), conn);
+                cmd.Transaction = myTrans;
+                cmd.ExecuteNonQuery();
+                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
+                cmd = null;
+
+                string bcPsRes = string.Format(@"INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES ('TUR','Trust - System Users','To Achieve trust among the users of system or application');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('TDP', 'Trust - Diversified Parties', 'To Achieve trust among the diversified parties');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('DS', 'Distributed System', 'To Achieve distributed feature to system');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('STR', 'Storage', 'To Achieve Storage');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('CNF', 'Coin Feature', 'For Implementing Coin System');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('OTH', 'Others', 'Other Uses');");
+                cmd = new MySqlCommand(bcPsRes.ToString(), conn);
+                cmd.Transaction = myTrans;
+                cmd.ExecuteNonQuery();
+                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
+                cmd = null;
+
+                //16. Common Parameters.
                 string cparams = string.Format(@"CREATE TABLE `trdatav1`.`CommonParameters` (`pID` INT NOT NULL, `pName` VARCHAR(500) NOT NULL, `pCitation` VARCHAR(150) NOT NULL, `pRef` VARCHAR(5000) NOT NULL, PRIMARY KEY (`pID`));");
                 cmd = new MySqlCommand(cparams.ToString(), conn);
                 cmd.Transaction = myTrans;
@@ -419,8 +391,10 @@ namespace UoB.TD.DataAccess
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                //14. Training data.
-                string trdata = string.Format(@"CREATE TABLE `trdatav1`.`trainingdata`(`pID` INT NOT NULL,  `aaID` INT NOT NULL, `bcnID` INT NOT NULL, `bcnpID` INT NOT NULL, `bccID` INT NOT NULL, `bcsID` INT NOT NULL, `bclID` INT NOT NULL, `bcprID` INT NOT NULL, `bcdaID` INT NOT NULL, `bcdapID` INT NOT NULL, `bcdfID` INT NOT NULL, `asID` INT NOT NULL, `asfID` INT NOT NULL, `nfrasID` INT NOT NULL, `dsID` INT NOT NULL, `bpID` INT NOT NULL, PRIMARY KEY (`pID`),
+                //17. Training data.
+                string trdata = string.Format(@"CREATE TABLE `trdatav1`.`trainingdata`(`pID` INT NOT NULL,  `aaID` VARCHAR(3) NOT NULL, `bcnID` VARCHAR(3) NOT NULL, `bcnpID` VARCHAR(3) NOT NULL, `bccID` VARCHAR(3) NOT NULL, `bcsID` VARCHAR(3) NOT NULL, 
+                                                                                        `bclID` VARCHAR(3) NOT NULL, `bcprID` VARCHAR(3) NOT NULL, `bcdaID` VARCHAR(3) NOT NULL, `bcdapID` VARCHAR(3) NOT NULL, `bcdfID` VARCHAR(3) NOT NULL, `asID` VARCHAR(3) NOT NULL, 
+                                                                                        `nfrasID` VARCHAR(3) NOT NULL, `dsID` VARCHAR(3) NOT NULL, `bpID` VARCHAR(3) NOT NULL,`rsID` VARCHAR(3) NOT NULL, PRIMARY KEY (`pID`),
                                                     CONSTRAINT `paperid`
                                                         FOREIGN KEY (`pID`)
                                                         REFERENCES `trdatav1`.`commonparameters` (`pID`)
@@ -481,11 +455,6 @@ namespace UoB.TD.DataAccess
                                                         REFERENCES `trdatav1`.`ArchitectureStyle` (`asID`)
                                                         ON DELETE NO ACTION
                                                         ON UPDATE NO ACTION,
-                                                    CONSTRAINT `bcarstylefeaid`
-                                                        FOREIGN KEY (`asfID`)
-                                                        REFERENCES `trdatav1`.`ArchitectureStyleFeatures` (`asfID`)
-                                                        ON DELETE NO ACTION
-                                                        ON UPDATE NO ACTION,
                                                     CONSTRAINT `bcnfrsinarid`
                                                         FOREIGN KEY (`nfrasID`)
                                                         REFERENCES `trdatav1`.`NFRsInArchitecture` (`nfrasID`)
@@ -499,6 +468,11 @@ namespace UoB.TD.DataAccess
                                                     CONSTRAINT `bcplatid`
                                                         FOREIGN KEY (`bpID`)
                                                         REFERENCES `trdatav1`.`BlockchainPlatforms` (`bpID`)
+                                                        ON DELETE NO ACTION
+                                                        ON UPDATE NO ACTION,
+                                                    CONSTRAINT `resuid`
+                                                        FOREIGN KEY (`rsID`)
+                                                        REFERENCES `trdatav1`.`ResultsObtained` (`rsID`)
                                                         ON DELETE NO ACTION
                                                         ON UPDATE NO ACTION);");
                 cmd = new MySqlCommand(trdata.ToString(), conn);
@@ -522,3 +496,58 @@ namespace UoB.TD.DataAccess
     }
 }
 
+#region OLD Code
+/*
+//12. Features for each Architecture Style.
+                string bcASFeature = string.Format(@"CREATE TABLE `trdatav1`.`ArchitectureStyleFeatures` (`asfID` INT NOT NULL, `asfName` VARCHAR(150) NOT NULL, `asfNotes` VARCHAR(1500) NOT NULL, PRIMARY KEY (`asfID`));");
+                cmd = new MySqlCommand(bcASFeature.ToString(), conn);
+                cmd.Transaction = myTrans;
+                cmd.ExecuteNonQuery();
+                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
+                cmd = null;
+
+                string bcAStFeature = string.Format(@"INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (1,'SOA-Service Descriptions','Service Descriptions for services');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (2,'SOA-Service Contract','Service Contract abstractly describes functionality of service');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (3,'SOA-Service Policy','Service Policy');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (4,'SOA-Service Discovery','Service Discovery enables discovering service'); 
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (5,'SOA-Service Bus','Service Bus is the wrapping service with communication protocols'); 
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (6,'SOA-Service Composition','Services using other services');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (7,'SOA-Service Asynchronous','Asyn Services');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (8,'SOA-Service Orchestration','arranging services');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (9,'SOA-Service Virtualization','Crucual for Scaling');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (10,'SOA-Service Quality','Quality of Service'); 
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (11,'SOA-Interoperability','Inter operability'); 
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (12,'SOA-Location Transparency','Service can be hosted any location');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (13,'MS-Module Boundaries',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (14,'MS-Deployment',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (15,'MS-Technology Diversity',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (16,'MS-Consistency',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (17,'MS-Complexity',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (18,'MS-Diversity',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (19,'OF-Open',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (20,'OF-Autonomy',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (21,'OF-Reliability',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (22,'OF-Serviceability',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (23,'OF-Agility',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (24,'OF-Hierarchy',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (25,'OF-Programmability',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (26,'OF-N-Tier Fog Deployment',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (27,'CS-Data Management',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (28,'CS-Messaging',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (29,'CS-Management',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (30,'CS-Monitoring',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (31,'CS-Resiliency',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (32,'CS-Security',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (33,'OT-Object Oriented',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (34,'OT-Component Oriented',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (35,'OT-ClientServer',' ');
+                                                      INSERT INTO ArchitectureStyleFeatures(asfID,asfName,asfNotes) VALUES (36,'Other',' ');");
+                cmd = new MySqlCommand(bcAStFeature.ToString(), conn);
+                cmd.Transaction = myTrans;
+                cmd.ExecuteNonQuery();
+                System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
+                cmd = null;
+
+
+*/
+#endregion
