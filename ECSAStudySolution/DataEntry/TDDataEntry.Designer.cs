@@ -40,7 +40,7 @@
             this.btnMDCreate.Location = new System.Drawing.Point(12, 12);
             this.btnMDCreate.Name = "btnMDCreate";
             this.btnMDCreate.Size = new System.Drawing.Size(108, 30);
-            this.btnMDCreate.TabIndex = 0;
+            this.btnMDCreate.TabIndex = 2;
             this.btnMDCreate.Text = "Create Master DB";
             this.btnMDCreate.UseVisualStyleBackColor = true;
             this.btnMDCreate.Click += new System.EventHandler(this.btnMDCreate_Click);
@@ -60,7 +60,7 @@
             this.btnTDEntry.Location = new System.Drawing.Point(274, 85);
             this.btnTDEntry.Name = "btnTDEntry";
             this.btnTDEntry.Size = new System.Drawing.Size(243, 46);
-            this.btnTDEntry.TabIndex = 2;
+            this.btnTDEntry.TabIndex = 0;
             this.btnTDEntry.Text = "Enter Training Data";
             this.btnTDEntry.UseVisualStyleBackColor = true;
             this.btnTDEntry.Click += new System.EventHandler(this.btnTDEntry_Click);
@@ -70,7 +70,7 @@
             this.btnExit.Location = new System.Drawing.Point(680, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(108, 30);
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 1;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -80,7 +80,7 @@
             this.btnDeleteDAta.Location = new System.Drawing.Point(126, 12);
             this.btnDeleteDAta.Name = "btnDeleteDAta";
             this.btnDeleteDAta.Size = new System.Drawing.Size(108, 30);
-            this.btnDeleteDAta.TabIndex = 4;
+            this.btnDeleteDAta.TabIndex = 3;
             this.btnDeleteDAta.Text = "Delete Master DB";
             this.btnDeleteDAta.UseVisualStyleBackColor = true;
             this.btnDeleteDAta.Click += new System.EventHandler(this.btnDeleteDAta_Click);
