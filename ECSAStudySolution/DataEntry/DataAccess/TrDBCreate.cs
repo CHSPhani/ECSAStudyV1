@@ -106,6 +106,7 @@ namespace UoB.TD.DataAccess
                                                  INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('CCN','Customized-Consortium','Customizations done to Consortium Blockchains solutions like modfying consensus or participation');
                                                  INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('PUB','Public','Public Blockchains');
                                                  INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('NEW','New Implementation','Newly Implemented Blockchains from ground up');
+                                                 INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('FED','Federated Blockchain','Different Blockchain networks are considered as a unit');
                                                  INSERT INTO BCNetworks(bcnID,bcnName,bcnNotes) VALUES ('OTH','Others','Other networks like Gunicorn that are considered as Blockchains');");
                 cmd = new MySqlCommand(bcnData.ToString(), conn);
                 cmd.Transaction = myTrans;
@@ -251,6 +252,7 @@ namespace UoB.TD.DataAccess
                 cmd = null;
 
                 string bcDataFormat = string.Format(@"INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('SM','Standard Model','Data is formatted using standard data models like Relational, Key-Value etc.');
+                                                      INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('SC','Smart Contract','Data is formatted using Smart contract features like structures');
                                                       INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('JSN', 'JSON', 'Data is formatted using Java Script Object Notation');
                                                       INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('XML', 'XML', 'Data is formatted using XML');
                                                       INSERT INTO BCDataFormat(bcdfID,bcdfName,bcdfNotes) VALUES ('TPL', 'Tuple', 'Data is formatted using Tuple structure like triple, quadruple, pentuple etc..');
@@ -273,6 +275,7 @@ namespace UoB.TD.DataAccess
                 string bcArchStyle = string.Format(@"INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('SOA','SOA','Service Oriented Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('MS','Micro Services','Micro Services based Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OF','Open Fog','OpenFog Architecture for IoT');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('EDG','Edge Computing','Edge Computing Architecture for IoT');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('CO','Cloud Oriented','Cloud Oriented Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OS','Others ','Other Styles like Object Oriented, Component Oriented,Edge, Layered architectures.');");
                 cmd = new MySqlCommand(bcArchStyle.ToString(), conn);
@@ -371,10 +374,10 @@ namespace UoB.TD.DataAccess
                 System.Threading.Thread.Sleep(100 * 1);//sleep for 2 ms just to ensure everything is OK..
                 cmd = null;
 
-                string bcPsRes = string.Format(@"INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES ('TUR','Trust - System Users','To Achieve trust among the users of system or application');
+                string bcPsRes = string.Format(@"INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('TUR','Trust - System Users','To Achieve trust among the users of system or application');
                                                  INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('TDP', 'Trust - Diversified Parties', 'To Achieve trust among the diversified parties');
                                                  INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('DS', 'Distributed System', 'To Achieve distributed feature to system');
-                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('STR', 'Storage', 'To Achieve Storage');
+                                                 INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('SHR', 'Data Store and Sharing', 'To achieve secure distributed data store and sharing');
                                                  INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('CNF', 'Coin Feature', 'For Implementing Coin System');
                                                  INSERT INTO ResultsObtained(rsID,rsName,rsNotes) VALUES('OTH', 'Others', 'Other Uses');");
                 cmd = new MySqlCommand(bcPsRes.ToString(), conn);
