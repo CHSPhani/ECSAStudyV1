@@ -33,6 +33,7 @@
             this.btnTDEntry = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDeleteDAta = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMDCreate
@@ -85,12 +86,24 @@
             this.btnDeleteDAta.UseVisualStyleBackColor = true;
             this.btnDeleteDAta.Click += new System.EventHandler(this.btnDeleteDAta_Click);
             // 
+            // btnExport
+            // 
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(274, 160);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(243, 46);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export Training Data";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // TDDataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnDeleteDAta);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnTDEntry);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button btnTDEntry;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDeleteDAta;
+        private System.Windows.Forms.Button btnExport;
     }
 }

@@ -10,6 +10,50 @@ namespace UoB.TD.DataAccess
 {
     public class MasterDataAccess
     {
+        public static List<TrainingDataModelForExcel> GetTrainingData(MySqlConnection conn, ref string errorMsg)
+        {
+            List<TrainingDataModelForExcel> tModel = new List<TrainingDataModelForExcel>();
+            TrainingDataModelForExcel tM1 = new TrainingDataModelForExcel() { PId = "PID", AaID = "Application Area Id", BcnID = "Blockchain Network Id", BcnpID = "BC Network Participation ID",
+                                                BccID = "Blockchain Consensus Id",
+                                                BcsID = "BC Scalability ID", BclID = "BC Latency ID", BcprID = "BC Performance Id", BcdaID = "BC Data Access ID", BcdapID = "BC Data Access Policy ID",
+                                                bcdfID = "BC Data Format", AsID = "Architecture Style Id", NfrasID = "NFRs in Architecture Id", DsID = "Data Storage Id",
+                                                BpID = "Blockchain Platform Id", RsID = "Results Obtained"};
+            tModel.Add(tM1);
+            try
+            {
+                string sql = string.Format(" SELECT * FROM trainingdata");
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    TrainingDataModelForExcel tM = new TrainingDataModelForExcel();
+                    tM.PId = rdr[0].ToString();
+                    tM.AaID = rdr[1].ToString();
+                    tM.BcnID = rdr[2].ToString();
+                    tM.BcnpID = rdr[3].ToString();
+                    tM.BccID = rdr[4].ToString();
+                    tM.BcsID = rdr[5].ToString();
+                    tM.BclID = rdr[6].ToString();
+                    tM.BcprID = rdr[7].ToString();
+                    tM.BcdaID = rdr[8].ToString();
+                    tM.BcdapID = rdr[9].ToString();
+                    tM.bcdfID = rdr[10].ToString();
+                    tM.AsID = rdr[11].ToString();
+                    tM.NfrasID = rdr[12].ToString();
+                    tM.DsID = rdr[13].ToString();
+                    tM.BpID = IdToNumericValues.GetNumericValuesForBPId(rdr[14].ToString()).ToString();
+                    tM.RsID = rdr[15].ToString();
+                    tModel.Add(tM);
+                }
+                rdr.Close();
+                cmd = null;
+            }
+            catch(Exception ex)
+            {
+                errorMsg = string.Format("Exception happened when getting training data from database. Reason is {0}", ex.Message);
+            }
+            return tModel;
+        }
         public static bool SaveCommonDetails (CommonDataSaveModel cModel, TrainingDataModel tModel, MySqlConnection conn, ref string errorMsg)
         {
             MySqlTransaction myTrans;

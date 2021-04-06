@@ -359,6 +359,7 @@ namespace UoB.TD.DataAccess
                                                  INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('BDB','BigChainDB','https://www.bigchaindb.com/');
                                                  INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('TMT','Tendermint','https://tendermint.com/');
                                                  INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('GNT','GRIDNET','https://gridnet.org/');
+                                                 INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('TRN','TIERION','https://tierion.com/');   
                                                  INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('CUS','Custom',' ');	
                                                  INSERT INTO BlockchainPlatforms(bpID,bpName,bpNotes) VALUES ('OTH','Others',' ');");
                 cmd = new MySqlCommand(bchains.ToString(), conn);
