@@ -128,7 +128,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 306);
+            this.label5.Location = new System.Drawing.Point(73, 306);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(141, 25);
             this.label5.TabIndex = 20;
@@ -138,7 +138,7 @@
             // 
             this.cmbAArea.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAArea.FormattingEnabled = true;
-            this.cmbAArea.Location = new System.Drawing.Point(177, 300);
+            this.cmbAArea.Location = new System.Drawing.Point(232, 300);
             this.cmbAArea.Name = "cmbAArea";
             this.cmbAArea.Size = new System.Drawing.Size(266, 33);
             this.cmbAArea.TabIndex = 19;
@@ -147,7 +147,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 359);
+            this.label3.Location = new System.Drawing.Point(63, 359);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 25);
             this.label3.TabIndex = 22;
@@ -157,7 +157,7 @@
             // 
             this.cmbBcType.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBcType.FormattingEnabled = true;
-            this.cmbBcType.Location = new System.Drawing.Point(177, 358);
+            this.cmbBcType.Location = new System.Drawing.Point(232, 358);
             this.cmbBcType.Name = "cmbBcType";
             this.cmbBcType.Size = new System.Drawing.Size(266, 33);
             this.cmbBcType.TabIndex = 21;
@@ -166,7 +166,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(10, 414);
+            this.label6.Location = new System.Drawing.Point(65, 414);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 25);
             this.label6.TabIndex = 24;
@@ -176,7 +176,7 @@
             // 
             this.cmbNwPart.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNwPart.FormattingEnabled = true;
-            this.cmbNwPart.Location = new System.Drawing.Point(177, 413);
+            this.cmbNwPart.Location = new System.Drawing.Point(232, 413);
             this.cmbNwPart.Name = "cmbNwPart";
             this.cmbNwPart.Size = new System.Drawing.Size(266, 33);
             this.cmbNwPart.TabIndex = 23;
@@ -185,17 +185,17 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(84, 582);
+            this.label7.Location = new System.Drawing.Point(92, 582);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 25);
+            this.label7.Size = new System.Drawing.Size(122, 25);
             this.label7.TabIndex = 30;
-            this.label7.Text = "Latency";
+            this.label7.Text = "Latency in BC";
             // 
             // cmbLatency
             // 
             this.cmbLatency.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLatency.FormattingEnabled = true;
-            this.cmbLatency.Location = new System.Drawing.Point(177, 581);
+            this.cmbLatency.Location = new System.Drawing.Point(232, 581);
             this.cmbLatency.Name = "cmbLatency";
             this.cmbLatency.Size = new System.Drawing.Size(266, 33);
             this.cmbLatency.TabIndex = 29;
@@ -204,7 +204,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(67, 524);
+            this.label8.Location = new System.Drawing.Point(122, 524);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 25);
             this.label8.TabIndex = 28;
@@ -214,7 +214,7 @@
             // 
             this.cmbScalability.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbScalability.FormattingEnabled = true;
-            this.cmbScalability.Location = new System.Drawing.Point(177, 526);
+            this.cmbScalability.Location = new System.Drawing.Point(232, 526);
             this.cmbScalability.Name = "cmbScalability";
             this.cmbScalability.Size = new System.Drawing.Size(266, 33);
             this.cmbScalability.TabIndex = 27;
@@ -223,7 +223,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(58, 469);
+            this.label9.Location = new System.Drawing.Point(113, 469);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(101, 25);
             this.label9.TabIndex = 26;
@@ -233,7 +233,7 @@
             // 
             this.cmbConsensus.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbConsensus.FormattingEnabled = true;
-            this.cmbConsensus.Location = new System.Drawing.Point(177, 468);
+            this.cmbConsensus.Location = new System.Drawing.Point(232, 468);
             this.cmbConsensus.Name = "cmbConsensus";
             this.cmbConsensus.Size = new System.Drawing.Size(266, 33);
             this.cmbConsensus.TabIndex = 25;
@@ -242,7 +242,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(501, 424);
+            this.label11.Location = new System.Drawing.Point(543, 429);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(151, 25);
             this.label11.TabIndex = 40;
@@ -252,7 +252,7 @@
             // 
             this.cmbAs.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAs.FormattingEnabled = true;
-            this.cmbAs.Location = new System.Drawing.Point(658, 421);
+            this.cmbAs.Location = new System.Drawing.Point(700, 424);
             this.cmbAs.Name = "cmbAs";
             this.cmbAs.Size = new System.Drawing.Size(266, 33);
             this.cmbAs.TabIndex = 39;
@@ -261,7 +261,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(542, 366);
+            this.label12.Location = new System.Drawing.Point(584, 371);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 25);
             this.label12.TabIndex = 38;
@@ -271,7 +271,7 @@
             // 
             this.cmbDataFormat.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDataFormat.FormattingEnabled = true;
-            this.cmbDataFormat.Location = new System.Drawing.Point(658, 363);
+            this.cmbDataFormat.Location = new System.Drawing.Point(700, 366);
             this.cmbDataFormat.Name = "cmbDataFormat";
             this.cmbDataFormat.Size = new System.Drawing.Size(266, 33);
             this.cmbDataFormat.TabIndex = 37;
@@ -280,7 +280,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(489, 306);
+            this.label13.Location = new System.Drawing.Point(531, 311);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(163, 25);
             this.label13.TabIndex = 36;
@@ -290,7 +290,7 @@
             // 
             this.cmbDap.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDap.FormattingEnabled = true;
-            this.cmbDap.Location = new System.Drawing.Point(658, 300);
+            this.cmbDap.Location = new System.Drawing.Point(700, 303);
             this.cmbDap.Name = "cmbDap";
             this.cmbDap.Size = new System.Drawing.Size(266, 33);
             this.cmbDap.TabIndex = 35;
@@ -299,7 +299,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(49, 693);
+            this.label14.Location = new System.Drawing.Point(108, 693);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(106, 25);
             this.label14.TabIndex = 34;
@@ -309,7 +309,7 @@
             // 
             this.cmbDataAccess.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDataAccess.FormattingEnabled = true;
-            this.cmbDataAccess.Location = new System.Drawing.Point(176, 693);
+            this.cmbDataAccess.Location = new System.Drawing.Point(231, 693);
             this.cmbDataAccess.Name = "cmbDataAccess";
             this.cmbDataAccess.Size = new System.Drawing.Size(266, 33);
             this.cmbDataAccess.TabIndex = 33;
@@ -318,17 +318,17 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(46, 640);
+            this.label15.Location = new System.Drawing.Point(8, 640);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 25);
+            this.label15.Size = new System.Drawing.Size(206, 25);
             this.label15.TabIndex = 32;
-            this.label15.Text = "Performance";
+            this.label15.Text = "BC Performance Factors";
             // 
             // cmbPerf
             // 
             this.cmbPerf.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerf.FormattingEnabled = true;
-            this.cmbPerf.Location = new System.Drawing.Point(176, 640);
+            this.cmbPerf.Location = new System.Drawing.Point(231, 640);
             this.cmbPerf.Name = "cmbPerf";
             this.cmbPerf.Size = new System.Drawing.Size(266, 33);
             this.cmbPerf.TabIndex = 31;
@@ -337,7 +337,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(474, 601);
+            this.label16.Location = new System.Drawing.Point(517, 606);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(177, 25);
             this.label16.TabIndex = 48;
@@ -347,7 +347,7 @@
             // 
             this.cmbBcPlat.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBcPlat.FormattingEnabled = true;
-            this.cmbBcPlat.Location = new System.Drawing.Point(658, 597);
+            this.cmbBcPlat.Location = new System.Drawing.Point(700, 600);
             this.cmbBcPlat.Name = "cmbBcPlat";
             this.cmbBcPlat.Size = new System.Drawing.Size(266, 33);
             this.cmbBcPlat.TabIndex = 47;
@@ -356,7 +356,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(469, 542);
+            this.label17.Location = new System.Drawing.Point(508, 547);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(186, 25);
             this.label17.TabIndex = 46;
@@ -366,7 +366,7 @@
             // 
             this.cmbDS.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDS.FormattingEnabled = true;
-            this.cmbDS.Location = new System.Drawing.Point(658, 543);
+            this.cmbDS.Location = new System.Drawing.Point(700, 546);
             this.cmbDS.Name = "cmbDS";
             this.cmbDS.Size = new System.Drawing.Size(266, 33);
             this.cmbDS.TabIndex = 45;
@@ -375,7 +375,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(501, 483);
+            this.label18.Location = new System.Drawing.Point(544, 488);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(150, 25);
             this.label18.TabIndex = 44;
@@ -385,7 +385,7 @@
             // 
             this.cmbAsNFR.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAsNFR.FormattingEnabled = true;
-            this.cmbAsNFR.Location = new System.Drawing.Point(658, 478);
+            this.cmbAsNFR.Location = new System.Drawing.Point(700, 481);
             this.cmbAsNFR.Name = "cmbAsNFR";
             this.cmbAsNFR.Size = new System.Drawing.Size(266, 33);
             this.cmbAsNFR.TabIndex = 43;
@@ -426,7 +426,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(469, 661);
+            this.label10.Location = new System.Drawing.Point(546, 666);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(148, 25);
             this.label10.TabIndex = 53;
@@ -436,7 +436,7 @@
             // 
             this.cmbarFeatures.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbarFeatures.FormattingEnabled = true;
-            this.cmbarFeatures.Location = new System.Drawing.Point(658, 653);
+            this.cmbarFeatures.Location = new System.Drawing.Point(700, 656);
             this.cmbarFeatures.Name = "cmbarFeatures";
             this.cmbarFeatures.Size = new System.Drawing.Size(266, 33);
             this.cmbarFeatures.TabIndex = 52;

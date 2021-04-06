@@ -82,7 +82,7 @@ namespace UoB.TD.DataAccess
                                                    INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('CPS','CPS','Cyber Physical Systems');
                                                    INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('VM','Vehicle Monitoring','Intellgient Transportation');
                                                    INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('SC','Supply Chain','Supply Chain Systems');
-                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('DS','Document Store','Document Stores');
+                                                   INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('STR','Store','Blockchain used to Store Documents, File, Content etc');
                                                    INSERT INTO ApplicationArea(aaID,aaName,aaNotes) VALUES ('LM','Log Management','Log Management');");
                 cmd = new MySqlCommand(aAreaData.ToString(), conn);
                 cmd.Transaction = myTrans;
@@ -276,6 +276,7 @@ namespace UoB.TD.DataAccess
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('MS','Micro Services','Micro Services based Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OF','Open Fog','OpenFog Architecture for IoT');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('EDG','Edge Computing','Edge Computing Architecture for IoT');
+                                                     INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('LAY','Layered Architecture','Layered Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('CO','Cloud Oriented','Cloud Oriented Architecture');
                                                      INSERT INTO ArchitectureStyle(asID,asName,asNotes) VALUES ('OS','Others ','Other Styles like Object Oriented, Component Oriented,Edge, Layered architectures.');");
                 cmd = new MySqlCommand(bcArchStyle.ToString(), conn);
