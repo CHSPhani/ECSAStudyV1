@@ -119,7 +119,7 @@ namespace UoB.TD
                 excelWorkBook.Close();
                 excelApp.Quit();
             }
-            MessageBox.Show("citation details are exported");
+            MessageBox.Show("Training details are exported");
         }
     }
 }

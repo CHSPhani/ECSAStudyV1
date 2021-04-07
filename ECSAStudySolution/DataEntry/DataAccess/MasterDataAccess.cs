@@ -28,21 +28,21 @@ namespace UoB.TD.DataAccess
                 {
                     TrainingDataModelForExcel tM = new TrainingDataModelForExcel();
                     tM.PId = rdr[0].ToString();
-                    tM.AaID = rdr[1].ToString();
-                    tM.BcnID = rdr[2].ToString();
-                    tM.BcnpID = rdr[3].ToString();
-                    tM.BccID = rdr[4].ToString();
-                    tM.BcsID = rdr[5].ToString();
-                    tM.BclID = rdr[6].ToString();
-                    tM.BcprID = rdr[7].ToString();
-                    tM.BcdaID = rdr[8].ToString();
-                    tM.BcdapID = rdr[9].ToString();
-                    tM.bcdfID = rdr[10].ToString();
-                    tM.AsID = rdr[11].ToString();
-                    tM.NfrasID = rdr[12].ToString();
-                    tM.DsID = rdr[13].ToString();
+                    tM.AaID = IdToNumericValues.GetAAID(rdr[1].ToString()).ToString();
+                    tM.BcnID = IdToNumericValues.GetBcnID(rdr[2].ToString()).ToString();
+                    tM.BcnpID = IdToNumericValues.GetBcnpId(rdr[3].ToString()).ToString();
+                    tM.BccID = IdToNumericValues.GetBccId(rdr[4].ToString()).ToString();
+                    tM.BcsID = IdToNumericValues.GetBcsId(rdr[5].ToString()).ToString();
+                    tM.BclID = IdToNumericValues.GetBclId(rdr[6].ToString()).ToString();
+                    tM.BcprID = IdToNumericValues.GetBcprId(rdr[7].ToString()).ToString();
+                    tM.BcdaID = IdToNumericValues.GetBcdaId(rdr[8].ToString()).ToString();
+                    tM.BcdapID = IdToNumericValues.GetBcdapId(rdr[9].ToString()).ToString();
+                    tM.bcdfID = IdToNumericValues.GetBcdfId(rdr[10].ToString()).ToString();
+                    tM.AsID = IdToNumericValues.GetAsId(rdr[11].ToString()).ToString();
+                    tM.NfrasID = IdToNumericValues.GetNfrasId(rdr[12].ToString()).ToString();
+                    tM.DsID = IdToNumericValues.GetDsId(rdr[13].ToString()).ToString();
                     tM.BpID = IdToNumericValues.GetNumericValuesForBPId(rdr[14].ToString()).ToString();
-                    tM.RsID = rdr[15].ToString();
+                    tM.RsID = IdToNumericValues.GetRsId(rdr[15].ToString()).ToString();
                     tModel.Add(tM);
                 }
                 rdr.Close();
